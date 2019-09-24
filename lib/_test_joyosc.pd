@@ -1,2 +1,0 @@
-#N canvas 537 53 450 300 12;
-#X obj 76 91 joyosc/j_joystick;

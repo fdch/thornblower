@@ -1,5 +1,7 @@
 # thornblower
 
+![ps4-guide](https://raw.githubusercontent.com/fdch/thornblower/master/img/ps4-guide.jpg)
+
 A Pure Data performance patch that works with the PS4 controller. It was used to perform with the Sonic Arts Ensemble at Ohio State University, in network with [Andreas Weixler](http://avant.mur.at/) and [Se-Lien Chuang](http://avant.mur.at/chuang/index.html)'s [iScore](http://avant.mur.at/research/iScore/index.html)
 
 ## Usage
@@ -73,11 +75,10 @@ At all times you can trigger a 4 channel spatialization that affects all instrum
     - onoff: `Right Analog (press)`
     - position: `Right Analog`
 
-## Network
+## Network (optional)
 
 Since the patch was used with [Andreas Weixler](http://avant.mur.at/) and [Se-Lien Chuang](http://avant.mur.at/chuang/index.html)'s live notation software [iScore](http://avant.mur.at/research/iScore/index.html) written in Max/MSP, a network is established between Pure Data and a custom-hacked version of iScore (with kind permission of the authors :). To get iScore, visit [this website](http://avant.mur.at/research/iScore/index.html)
 
 The purpose of this hack is to replace the iScore's page-turning gesture tracking with a button click on the controller (the `share` button). This reduced greatly the computation need of iScore and allows both patches to run simultaneously on the same computer. Furthermore, by accessing the score number within Pure Data one can make presets for the instruments according to which score is playing. However, this turned out to be more limiting than enabling for performance and the preset system remained unused.
-
 
 

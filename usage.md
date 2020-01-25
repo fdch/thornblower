@@ -8,26 +8,26 @@ This instrument is built upon the basic Frequency Modulation technique.
 - carrier frequency: `L1` (random)
 - modulator frequency: `R1` (random)
 - modulator amplitude: `R2`
-- envelope shape: `square`
-- envelope tempo: `triangle` (random)
 - trigger rate: `L2`
+- envelope shape: `square`
+- envelope tempi: `triangle` (random)
 
 
 ### lor || lorenz noise
 
-This is a noise that comes out of the computation of the Lorenz System of equations at different speeds.
+This is a noise that comes out of the computation of two Lorenz System of equations, one for each channel.
 
 - onoff: `circle`
-- bandpass filter (vcf): `Left Analog`
-- speed || pitch-like change: `R2` (NOTe: Very fast speeds result in computation overload. This is intentional. Be conscious and careful at higher speeds)
+- speed || pitch-like change: `L2 R2` (NOTE: Very fast speeds result in computation overload. This is intentional. Be conscious and careful at higher speeds)
 
 ### im || impulse
 
-This is a chaotic-like variant of the Frequency Modulator that consists of two generators.
+This is a chaotic-like variant of the Frequency Modulator that consists of two generators, one for each channel.
 
 - onoff: `PAD`
-- generator A: `Left Analog`
-- generator B: `Right Analog`
+- generator 1: `Left Analog`
+- generator 2: `Right Analog`
+- envelope shape: `square`
 
 ---
 
@@ -55,3 +55,8 @@ At all times you can trigger a 4 channel spatialization that affects all instrum
 - Right-side 
     - onoff: `Right Analog (press)`
     - position: `Right Analog`
+
+
+---
+
+See [README.md](README.md) and [download.md](download.md) for instructions.

@@ -15,3 +15,6 @@ You need the following Pure Data libraries available via `deken` (`Help>Find Ext
 optional: 
 - else: for `[else/pan4~]` object (only used in 4-channel mode)
 
+---
+
+See [README.md](README.md) and [usage.md](usage.md) for instructions.

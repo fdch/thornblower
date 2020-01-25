@@ -18,7 +18,7 @@ This instrument is built upon the basic Frequency Modulation technique.
 This is a noise that comes out of the computation of two Lorenz System of equations, one for each channel.
 
 - onoff: `circle`
-- speed || pitch-like change: `L2 R2` (NOTE: Very fast speeds result in computation overload. This is intentional. Be conscious and careful at higher speeds)
+- speed: `L2 R2` (NOTE: Very fast speeds result in computation overload. This is intentional. Be conscious and careful at higher speeds)
 
 ### im || impulse
 

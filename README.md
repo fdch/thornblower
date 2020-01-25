@@ -2,7 +2,20 @@
 
 ![ps4-guide](https://raw.githubusercontent.com/fdch/thornblower/master/img/ps4-guide.jpg)
 
-A Pure Data performance patch that works with the PS4 controller. It was used to perform with the Sonic Arts Ensemble at Ohio State University, in network with [Andreas Weixler](http://avant.mur.at/) and [Se-Lien Chuang](http://avant.mur.at/chuang/index.html)'s [iScore](http://avant.mur.at/research/iScore/index.html)
+A Pure Data performance patch that works with the PS4 controller. It was first used to perform with the Sonic Arts Ensemble at Ohio State University, in network with [Andreas Weixler](http://avant.mur.at/) and [Se-Lien Chuang](http://avant.mur.at/chuang/index.html)'s [iScore](http://avant.mur.at/research/iScore/index.html)
+
+It was then used in multiple performances, such as:
+
+- [https://www.facebook.com/lacupulagaleria/videos/553716875479273](https://www.facebook.com/lacupulagaleria/videos/553716875479273)
+- [https://www.facebook.com/lacupulagaleria/videos/2462355797355865](https://www.facebook.com/lacupulagaleria/videos/2462355797355865)
+
+## Acknowledgements
+
+- Miller Puckette and the Pure Data community
+- Alexandre Torres Porres for the `else` library
+- Benitoite for giving `hidio` a revival
+- Brian Thomas and Joaco Cámara for lending me their PS4 Controllers :)
+
 
 ## Usage
 
@@ -14,16 +27,12 @@ pd main.pd
 
 ## Dependencies
 
-You need the following Pure Data libraries available via `deken`:
-- hidio: for the `[hidio]` object to get the PS4 controller data
-- else: for `[else/pan4~]` object
-- fd_lib: for the following objects (macos only, but you can replace them with abstractions): 
-    - iterate.pd_darwin
-    - lorenz.pd_darwin
-    - minimax.pd_darwin
-    - mtwister.pd_darwin
-    - counter.pd_darwin
-    - crand.pd_darwin
+You need the following Pure Data libraries available via `deken` (`Help>Find Externals`):
+- hidio: for the `[hidio]` object to get the PS4 controller data. This can be searched with `deken` or in Benitoite's [github repo](https://github.com/Benitoite/hidio). Alternatively, you can install danomatika's [joyosc](https://github.com/danomatika/joyosc) and reassign some receives... 
+- `fd_lib`: availble via `deken`, or [here](https://github.com/fdch/fd_lib)
+
+optional: 
+- else: for `[else/pan4~]` object (only used in 4-channel mode)
 
 ## Instruments
 
@@ -39,14 +48,6 @@ This instrument is built upon the basic Frequency Modulation technique.
 - envelope tempo: `triangle` (random)
 - trigger rate: `L2`
 
-### gr || granular synthesis
-
-This instrument consists of a Granular Synthesis patch that uses table lookup oscillators instead of buffers.
-
-- onoff: `PS` (center button)
-- wavetable and envelope shape (combined): `square` (random)
-- trigger + duration: `L2`
-- trigger + rate: `R2`
 
 ### lor || lorenz noise
 
@@ -64,6 +65,22 @@ This is a chaotic-like variant of the Frequency Modulator that consists of two g
 - generator A: `Left Analog`
 - generator B: `Right Analog`
 
+---
+
+The following is just optional:
+
+---
+
+### gr || granular synthesis
+
+This instrument consists of a Granular Synthesis patch that uses table lookup oscillators instead of buffers.
+
+- onoff: `PS` (center button)
+- wavetable and envelope shape (combined): `square` (random)
+- trigger + duration: `L2`
+- trigger + rate: `R2`
+
+
 ## Spatialization
 
 At all times you can trigger a 4 channel spatialization that affects all instruments.
@@ -74,11 +91,4 @@ At all times you can trigger a 4 channel spatialization that affects all instrum
 - Right-side 
     - onoff: `Right Analog (press)`
     - position: `Right Analog`
-
-## Network (optional)
-
-Since the patch was used with [Andreas Weixler](http://avant.mur.at/) and [Se-Lien Chuang](http://avant.mur.at/chuang/index.html)'s live notation software [iScore](http://avant.mur.at/research/iScore/index.html) written in Max/MSP, a network is established between Pure Data and a custom-hacked version of iScore (with kind permission of the authors :). To get iScore, visit [this website](http://avant.mur.at/research/iScore/index.html)
-
-The purpose of this hack is to replace the iScore's page-turning gesture tracking with a button click on the controller (the `share` button). This reduced greatly the computation need of iScore and allows both patches to run simultaneously on the same computer. Furthermore, by accessing the score number within Pure Data one can make presets for the instruments according to which score is playing. However, this turned out to be more limiting than enabling for performance and the preset system remained unused.
-
 

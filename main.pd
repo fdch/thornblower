@@ -16,7 +16,7 @@
 #X obj 122 108 r vol;
 #X obj 20 66 route quit float;
 #X msg 122 132 set \$1;
-#X msg 122 156 90;
+#X msg 122 156 93;
 #X obj 74 137 t f b;
 #X obj 74 175 pack;
 #X msg 182 85 bang \; pd-vol vis 1 \, editmode 0 \, zoom 2 \;;
@@ -1150,13 +1150,13 @@
 #X obj 199 156 tgl 30 0 b12 button_12-0 R 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 120 158 vsl 15 40 0 255 0 0 remap-ly remap-ly-0 LY 0 -9 0 10
--262144 -1 -1 1973 1;
+-262144 -1 -1 1942 1;
 #X obj 184 158 vsl 15 40 0 255 0 0 remap-ry remap-ry-0 RY 0 -9 0 10
--262144 -1 -1 2004 1;
+-262144 -1 -1 1927 1;
 #X obj 78 141 hsl 40 15 0 255 0 0 x x-0 LX -2 -8 0 10 -262144 -1 -1
-2019 1;
+1973 1;
 #X obj 202 141 hsl 40 15 0 255 0 0 z z-0 RX -2 -8 0 10 -262144 -1 -1
-1988 1;
+1958 1;
 #X obj 135 64 tgl 50 0 b14 button_14-0 PAD 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 150 180 tgl 15 0 b13 button_13-0 PS 17 7 0 10 -262144 -1 -1
@@ -1236,9 +1236,9 @@ SHARP SOUND;
 #N canvas 949 49 187 348 vol 1;
 #X obj 13 22 vu 15 120 vu vu -1 -8 0 10 -66577 -1 1 0;
 #X obj 61 16 vsl 15 128 0 127 0 0 vol vol-set vol 0 -9 0 10 -262144
--1 -1 18100 1;
+-1 -1 18600 1;
 #X obj 17 151 nbx 5 14 -1e+37 1e+37 0 0 empty vol empty 0 -8 0 10 -262144
--1 -1 90 256;
+-1 -1 93 256;
 #X restore 80 208 pd vol;
 #X text 47 185 Main Volume GUI:;
 #X text 237 57 <-- dacs are here;

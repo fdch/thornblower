@@ -1,0 +1,3 @@
+#!/bin/bash
+source ~/.bash_profile
+pd -jack -jackname thorn -channels 2 -nogui -blocksize 256 -audiobuf 10 -lib fd_lib -path fd_lib -open main.pd & pd -noaudio lib/gui/controls.pd

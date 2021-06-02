@@ -1,0 +1,29 @@
+#N canvas 0 303 450 300 12;
+#X obj 130 102 tgl 10 0 \$1-vu-switch \$1-vu-switch-set empty 17 7
+0 10 -204786 -1 -1 1 1;
+#X obj 119 116 vu 8 120 \$1-vu-1 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 102 104 vsl 14 132 0 123 0 0 \$1-vol \$1-vol-set \$1 0 -9 0
+10 -204786 -1 -1 10437 1;
+#X obj 131 116 vu 8 120 \$1-vu-2 empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 105 241 hsl 34 11 0 127 0 0 \$1-bal \$1-bal-set empty -2 -8
+0 10 -262144 -1 -1 1650 1;
+#X obj 122 254 bng 14 80 10 0 \$1-mid \$1-mid-set empty 17 7 0 10 -262144
+-1 -1;
+#X obj 217 203 int 127;
+#X obj 217 229 / 2;
+#X obj 217 255 s \$1-bal-set;
+#X obj 106 254 bng 14 80 10 0 \$1-mute \$1-mute-set empty 17 7 0 10
+-262144 -1 -1;
+#X obj 183 146 loadbang;
+#X obj 118 102 tgl 10 0 \$1-mono \$1-mono-set empty 17 7 0 10 -204786
+-1 -1 1 1;
+#X obj 179 21 prepend \$1 to-netsend;
+#X obj 179 45 prepend \$1-vol to-netsend;
+#X obj 179 69 prepend \$1-bal to-netsend;
+#X obj 179 93 prepend \$1-vu-switch to-netsend;
+#X obj 217 177 r \$1-mid;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 10 0 6 0;
+#X connect 16 0 6 0;
+#X coords 0 -1 1 1 42 170 2 100 100;

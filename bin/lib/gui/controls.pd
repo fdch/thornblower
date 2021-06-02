@@ -1,0 +1,639 @@
+#N struct 1004-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1013-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1022-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1031-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1055-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1064-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1073-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1082-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1109-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N struct 1118-point float x0 float y0 float xs float ys float fg float
+in float gridx float gridy;
+#N canvas 585 65 676 764 12;
+#X declare -path lib -path .. -lib fd_lib;
+#N canvas 35 31 1028 610 solo 0;
+#X obj 201 101 cnv 15 518 278 empty solo-canvas empty 20 12 0 14 -233017
+-1 0;
+#X obj 202 230 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 208 457 s impulse;
+#X obj 332 230 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 462 230 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 336 457 s impulse-mod;
+#X obj 464 457 s impulse-vib;
+#X obj 202 101 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 333 115 tgl 30 0 impulse-switch impulse-switch-set impulse 0
+-8 0 10 -204786 -1 -1 0 1;
+#X text 204 356 tempo - pitch;
+#X text 318 356 mod freq - index;
+#X obj 333 149 tgl 30 0 enable-solo enable-solo-set empty 17 7 0 10
+-257985 -1 -1 0 1;
+#X obj 421 149 hsl 128 15 0 127 0 1 reverb-cutoff reverb-cutoff-set
+reverb-cutoff 10 8 0 10 -262144 -1 -1 9400 1;
+#X obj 421 111 hsl 128 15 0 127 0 1 reverb-volume reverb-volume-set
+reverb-volume 10 8 0 10 -262144 -1 -1 2200 1;
+#X obj 421 130 hsl 128 15 0 127 0 1 reverb-feedback reverb-feedback-set
+reverb-feedback 10 8 0 10 -262144 -1 -1 12700 1;
+#X obj 421 167 hsl 128 15 0 127 0 1 reverb-cutoff-amt reverb-cutoff-amt-set
+reverb-cutoff-amt 10 8 0 10 -262144 -1 -1 700 1;
+#X obj 591 112 gui/vu-meter impulse;
+#X text 458 356 vib speed - width;
+#X obj 334 189 hradio 15 1 0 7 selector selector-set empty 0 -8 0 10
+-262144 -1 -1 1;
+#X obj 605 414 r selector;
+#X msg 605 440 set \$1;
+#X obj 605 466 s selector-set;
+#X obj 636 112 gui/vu-meter impulse-reverb;
+#X obj 726 123 prepend impulse-mod to-netsend;
+#X obj 726 147 prepend impulse-vib to-netsend;
+#X obj 81 91 t b f;
+#X obj 81 117 pack;
+#X obj 89 143 spigot 1;
+#X obj 160 70 r enable-solo;
+#X obj 30 22 r leftx-set;
+#X obj 116 13 r lefty-set;
+#X msg 116 39 127 \$1;
+#X obj 116 65 -;
+#X obj 726 99 prepend impulse to-netsend;
+#X obj 726 171 prepend impulse-switch to-netsend;
+#X obj 726 195 prepend selector to-netsend;
+#N canvas 0 22 723 300 (subpatch) 0;
+#X obj 18 203 outlet;
+#X obj 158 213 outlet;
+#X obj 328 213 outlet;
+#X obj 86 25 inlet;
+#X obj 98 86 t a a a;
+#X obj 42 174 spigot 1;
+#X obj 158 178 spigot 1;
+#X obj 326 168 spigot 1;
+#X obj 249 36 sel 0 1 2 3 4 5 6;
+#X msg 188 79 1;
+#X msg 240 88 0;
+#X msg 229 81 1;
+#X msg 281 90 0;
+#X msg 270 83 1;
+#X msg 324 90 0;
+#X msg 313 83 1;
+#X msg 378 82 1;
+#X msg 387 85 0;
+#X msg 422 80 1;
+#X msg 442 86 0;
+#X msg 479 77 1;
+#X msg 497 85 0;
+#X obj 249 10 r selector;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 4 2 7 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 8 1 11 0;
+#X connect 8 1 10 0;
+#X connect 8 2 13 0;
+#X connect 8 2 12 0;
+#X connect 8 3 15 0;
+#X connect 8 3 14 0;
+#X connect 8 4 16 0;
+#X connect 8 4 17 0;
+#X connect 8 5 18 0;
+#X connect 8 5 19 0;
+#X connect 8 6 20 0;
+#X connect 8 6 21 0;
+#X connect 9 0 7 1;
+#X connect 9 0 6 1;
+#X connect 9 0 5 1;
+#X connect 10 0 6 1;
+#X connect 10 0 7 1;
+#X connect 11 0 5 1;
+#X connect 12 0 7 1;
+#X connect 12 0 5 1;
+#X connect 13 0 6 1;
+#X connect 14 0 5 1;
+#X connect 14 0 6 1;
+#X connect 15 0 7 1;
+#X connect 16 0 5 1;
+#X connect 16 0 6 1;
+#X connect 17 0 7 1;
+#X connect 18 0 6 1;
+#X connect 18 0 7 1;
+#X connect 19 0 5 1;
+#X connect 20 0 5 1;
+#X connect 20 0 7 1;
+#X connect 21 0 6 1;
+#X connect 22 0 8 0;
+#X restore 334 210 pd;
+#X connect 1 0 2 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 7 0 36 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 25 0 26 0;
+#X connect 25 1 26 1;
+#X connect 26 0 27 0;
+#X connect 27 0 7 0;
+#X connect 28 0 27 1;
+#X connect 29 0 26 0;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 32 0 25 0;
+#X connect 36 0 1 0;
+#X connect 36 1 3 0;
+#X connect 36 2 4 0;
+#X coords 0 -1 1 1 520 280 2 200 100;
+#X restore 6 198 pd solo;
+#N canvas 35 31 1096 502 solo 0;
+#X obj 201 101 cnv 15 518 278 empty mult-canvas empty 20 12 0 14 -233017
+-1 0;
+#X obj 202 230 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 332 230 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 462 230 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 201 100 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 333 115 tgl 30 0 xpulse xpulse-set xpulse 0 -8 0 10 -204786
+-1 -1 0 1;
+#X text 204 356 tempo - pitch;
+#X text 318 356 mod freq - index;
+#X obj 333 149 tgl 30 0 enable-mult enable-mult-set empty 17 7 0 10
+-257985 -1 -1 0 1;
+#X text 458 356 vib speed - width;
+#X obj 593 112 gui/vu-meter xpulse;
+#X obj 208 457 s impulse-m;
+#X obj 336 457 s impulse-mod-m;
+#X obj 464 457 s impulse-vib-m;
+#X obj 364 207 hradio 15 1 0 7 selector selector-set empty 0 -8 0 10
+-262144 -1 -1 1;
+#X obj 640 112 gui/vu-meter xpulse-reverb;
+#X obj 421 149 hsl 128 15 0 127 0 1 reverb-cutoff reverb-cutoff-set
+reverb-cutoff 10 8 0 10 -262144 -1 -1 9400 1;
+#X obj 421 111 hsl 128 15 0 127 0 1 reverb-volume reverb-volume-set
+reverb-volume 10 8 0 10 -262144 -1 -1 2200 1;
+#X obj 421 130 hsl 128 15 0 127 0 1 reverb-feedback reverb-feedback-set
+reverb-feedback 10 8 0 10 -262144 -1 -1 12700 1;
+#X obj 421 167 hsl 128 15 0 127 0 1 reverb-cutoff-amt reverb-cutoff-amt-set
+reverb-cutoff-amt 10 8 0 10 -262144 -1 -1 700 1;
+#X obj 57 112 t b f;
+#X obj 57 138 pack;
+#X obj 51 184 spigot 1;
+#X obj 80 158 r enable-mult;
+#X obj 53 6 r rightx-set;
+#X obj 109 25 r righty-set;
+#X msg 109 51 127 \$1;
+#X obj 109 77 -;
+#X obj 727 101 prepend impulse-m to-netsend;
+#X obj 727 125 prepend impulse-mod-m to-netsend;
+#X obj 727 149 prepend impulse-vib-m to-netsend;
+#X obj 727 263 prepend xpulse to-netsend;
+#X obj 727 173 prepend reverb-volume to-netsend;
+#X obj 727 197 prepend reverb-feedback to-netsend;
+#X obj 727 221 prepend reverb-cutoff to-netsend;
+#X obj 727 242 prepend reverb-cutoff-amt to-netsend;
+#N canvas 0 22 723 300 (subpatch) 0;
+#X obj 18 203 outlet;
+#X obj 158 213 outlet;
+#X obj 328 213 outlet;
+#X obj 86 25 inlet;
+#X obj 98 86 t a a a;
+#X obj 42 174 spigot 1;
+#X obj 158 178 spigot 1;
+#X obj 326 168 spigot 1;
+#X obj 249 36 sel 0 1 2 3 4 5 6;
+#X msg 188 79 1;
+#X msg 240 88 0;
+#X msg 229 81 1;
+#X msg 281 90 0;
+#X msg 270 83 1;
+#X msg 324 90 0;
+#X msg 313 83 1;
+#X msg 378 82 1;
+#X msg 387 85 0;
+#X msg 422 80 1;
+#X msg 442 86 0;
+#X msg 479 77 1;
+#X msg 497 85 0;
+#X obj 249 10 r selector;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 4 2 7 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 8 1 11 0;
+#X connect 8 1 10 0;
+#X connect 8 2 13 0;
+#X connect 8 2 12 0;
+#X connect 8 3 15 0;
+#X connect 8 3 14 0;
+#X connect 8 4 16 0;
+#X connect 8 4 17 0;
+#X connect 8 5 18 0;
+#X connect 8 5 19 0;
+#X connect 8 6 20 0;
+#X connect 8 6 21 0;
+#X connect 9 0 7 1;
+#X connect 9 0 6 1;
+#X connect 9 0 5 1;
+#X connect 10 0 6 1;
+#X connect 10 0 7 1;
+#X connect 11 0 5 1;
+#X connect 12 0 7 1;
+#X connect 12 0 5 1;
+#X connect 13 0 6 1;
+#X connect 14 0 5 1;
+#X connect 14 0 6 1;
+#X connect 15 0 7 1;
+#X connect 16 0 5 1;
+#X connect 16 0 6 1;
+#X connect 17 0 7 1;
+#X connect 18 0 6 1;
+#X connect 18 0 7 1;
+#X connect 19 0 5 1;
+#X connect 20 0 5 1;
+#X connect 20 0 7 1;
+#X connect 21 0 6 1;
+#X connect 22 0 8 0;
+#X restore 332 207 pd;
+#X connect 1 0 11 0;
+#X connect 2 0 12 0;
+#X connect 3 0 13 0;
+#X connect 4 0 36 0;
+#X connect 20 0 21 0;
+#X connect 20 1 21 1;
+#X connect 21 0 22 0;
+#X connect 22 0 4 0;
+#X connect 23 0 22 1;
+#X connect 24 0 21 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 20 0;
+#X connect 36 0 1 0;
+#X connect 36 1 2 0;
+#X connect 36 2 3 0;
+#X coords 0 -1 1 1 520 280 2 200 100;
+#X restore 6 480 pd solo;
+#N canvas 93 30 1128 407 solo 0;
+#X obj 201 101 cnv 15 448 188 empty thornblower-canvas empty 20 12
+0 14 -233017 -1 0;
+#X obj 241 105 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 520 247 tgl 30 0 enable-thorn enable-thorn-set empty 17 7 0
+10 -257985 -1 -1 0 1;
+#X obj 485 247 tgl 30 0 impulse-R impulse-R-set R 0 -8 0 10 -204786
+-1 -1 0 1;
+#X obj 243 248 tgl 30 0 impulse-L impulse-L-set L 0 -8 0 10 -204786
+-1 -1 0 1;
+#X obj 485 105 else/slider2d 127 127 0 127 0 127 1 255 255 255 0 0
+0 0 0 0 0 0 empty empty;
+#X obj 558 247 tgl 30 0 lor lor-set lor 0 -8 0 10 -204786 -1 -1 0 1
+;
+#X obj 376 115 gui/vu-meter imp;
+#X obj 425 115 gui/vu-meter lor;
+#X symbolatom 323 259 0 0 0 2 imp-tab imp-tab-set imp-tab;
+#X obj 279 248 bng 30 100 10 0 tabs tabs-set empty 17 7 0 10 -262144
+-1 -1;
+#X obj 234 332 unpack;
+#X obj 234 356 s leftx;
+#X obj 292 355 s lefty;
+#X obj 479 319 unpack;
+#X obj 479 343 s rightx;
+#X obj 549 343 s righty;
+#X obj 80 135 t b f;
+#X obj 28 172 pack;
+#X obj 28 22 r leftx-set;
+#X obj 80 56 r lefty-set;
+#X msg 80 82 127 \$1;
+#X obj 80 108 -;
+#X obj 28 203 spigot;
+#X obj 67 178 r enable-thorn;
+#X obj 729 155 t b f;
+#X obj 677 192 pack;
+#X msg 729 102 127 \$1;
+#X obj 729 128 -;
+#X obj 677 223 spigot;
+#X obj 716 198 r enable-thorn;
+#X obj 677 42 r rightx-set;
+#X obj 729 76 r righty-set;
+#X obj 849 72 prepend leftx to-netsend;
+#X obj 849 96 prepend lefty to-netsend;
+#X obj 849 120 prepend rightx to-netsend;
+#X obj 849 144 prepend righty to-netsend;
+#X obj 850 167 prepend imp-tab to-netsend;
+#X obj 850 191 prepend impulse-L to-netsend;
+#X obj 850 215 prepend impulse-R to-netsend;
+#X obj 848 237 prepend lor to-netsend;
+#X obj 238 55 print;
+#X connect 1 0 11 0;
+#X connect 5 0 14 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 14 0 15 0;
+#X connect 14 1 16 0;
+#X connect 17 0 18 0;
+#X connect 17 1 18 1;
+#X connect 18 0 23 0;
+#X connect 19 0 18 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 17 0;
+#X connect 23 0 1 0;
+#X connect 24 0 23 1;
+#X connect 25 0 26 0;
+#X connect 25 1 26 1;
+#X connect 26 0 29 0;
+#X connect 27 0 28 0;
+#X connect 28 0 25 0;
+#X connect 29 0 5 0;
+#X connect 30 0 29 1;
+#X connect 31 0 26 0;
+#X connect 32 0 27 0;
+#X coords 0 -1 1 1 450 190 2 200 100;
+#X restore 6 6 pd solo;
+#N canvas 0 22 517 311 (subpatch) 0;
+#X obj 110 137 tgl 30 0 fm fm-set fm 0 -8 0 10 -204786 -1 -1 0 1;
+#X obj 153 111 gui/vu-meter fm;
+#X obj 230 99 prepend fm to-netsend;
+#X obj 230 122 prepend lefttrigger to-netsend;
+#X obj 230 145 prepend righttrigger to-netsend;
+#X obj 230 168 prepend a to-netsend;
+#X obj 230 191 prepend y to-netsend;
+#X coords 0 -1 1 1 126 190 2 100 100;
+#X restore 459 6 pd;
+#N canvas 634 146 497 340 volume 0;
+#X obj 152 10 prepend init to-netsend;
+#X obj 152 33 prepend mic-onoff to-netsend;
+#X obj 152 56 prepend start-rec to-netsend;
+#X obj 152 79 prepend stop-rec to-netsend;
+#X obj 11 11 cnv 15 135 278 \$0-connection-status \$0-connection-status-set
+empty 20 12 0 14 -225271 -262144 0;
+#X obj 16 17 tgl 30 0 joyosc joyosc-set joyosc 35 15 0 14 -262130 -1
+-1 1 1;
+#X obj 16 62 gui/vu-meter main;
+#X obj 17 249 bng 15 250 50 0 start-rec start-rec-set rec 17 7 0 10
+-258113 -1 -1;
+#X obj 17 268 fd_stopwatch;
+#X obj 61 250 bng 15 250 50 0 stop-rec stop-rec-set stop 17 7 0 10
+-257985 -1 -1;
+#X obj 63 130 bng 15 250 50 0 mute mute-set mute 17 7 0 10 -262130
+-1 -1;
+#X obj 63 108 bng 15 250 50 0 volume-up volume-up-set volume-up 17
+7 0 10 -262144 -1 -1;
+#X obj 63 86 tgl 15 0 meters meters-set meters 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 63 62 bng 15 250 50 0 init init-set init 17 7 0 10 -262144 -1
+-1;
+#X obj 64 152 tgl 30 0 mic-onoff mic-onoff-set mic 35 15 0 15 -258113
+-1 -1 0 1;
+#X obj 64 199 nbx 3 14 -1e+37 1e+37 0 0 mic-env mic-env-set mic-env
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 127 14 tgl 15 0 \$0-connection \$0-connection-set empty 17 7
+0 10 -262144 -1 -1 1 1;
+#X floatatom 103 224 5 0 0 0 hip hip-set hip;
+#X obj 154 132 prepend hip to-netsend;
+#X coords 0 -1 1 1 137 280 2 10 10;
+#X restore 531 201 pd volume _______;
+#N canvas 918 219 722 443 guts 0;
+#X obj 18 21 r dpup;
+#X obj 18 47 sel 1;
+#X obj 18 73 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 154 46 sel 1;
+#X obj 154 72 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 278 47 sel 1;
+#X obj 278 73 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 154 20 r dpleft;
+#X obj 278 21 r dpright;
+#X obj 17 95 s enable-thorn-set;
+#X obj 151 93 s enable-solo-set;
+#X obj 277 92 s enable-mult-set;
+#X obj 19 131 r dpdown;
+#X obj 19 157 sel 1;
+#X obj 19 183 counter -m 7;
+#X obj 19 209 s selector-set;
+#X obj 17 255 r enable-solo;
+#X obj 17 281 sel 0 1;
+#X msg 17 307 10;
+#X msg 50 305 7;
+#X msg 17 333 color \$1 0 22;
+#X obj 17 359 s solo-canvas;
+#X obj 127 280 sel 0 1;
+#X msg 127 306 10;
+#X msg 160 304 7;
+#X msg 127 332 color \$1 0 22;
+#X obj 241 281 sel 0 1;
+#X msg 241 307 10;
+#X msg 274 305 7;
+#X msg 241 333 color \$1 0 22;
+#X obj 127 254 r enable-mult;
+#X obj 127 358 s mult-canvas;
+#X obj 241 359 s thornblower-canvas;
+#X obj 241 255 r enable-thorn;
+#X obj 175 147 r start-set;
+#X obj 175 206 s fm-set;
+#X obj 176 173 sel 1;
+#X obj 425 153 loadbang;
+#X obj 427 46 clone vol/mute 8;
+#X obj 426 126 text define -k instruments;
+#A set imp \; lor \; fm \; impulse \; xpulse \; main \; impulse-reverb
+\; xpulse-reverb \;;
+#X obj 427 71 ext/joyosc;
+#X obj 427 23 declare -path lib -path .. -lib fd_lib;
+#N canvas 0 22 450 300 netsend 0;
+#X msg 59 62 connect localhost 5523;
+#X obj 59 169 netsend;
+#X obj 71 91 r to-netsend;
+#X obj 71 117 list prepend send;
+#X obj 71 143 list trim;
+#X obj 59 195 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 308 77 disconnect;
+#X obj 59 215 * 6;
+#X obj 59 263 s \$0-connection-status-set;
+#X msg 59 239 color \$1 \$1 0;
+#X obj 261 11 r \$0-connection;
+#X obj 261 35 sel 1 0;
+#X obj 272 115 loadbang;
+#X obj 272 138 int 1;
+#X obj 272 163 s \$0-connection-set;
+#X obj 272 205 t a a;
+#X obj 272 229 list split 1;
+#X obj 334 190 list split 1;
+#X obj 334 214 symbol;
+#X obj 316 252 list trim;
+#X obj 316 276 s;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 15 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 7 0;
+#X connect 6 0 1 0;
+#X connect 7 0 9 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 11 0 0 0;
+#X connect 11 1 6 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 15 0 16 0;
+#X connect 15 1 17 0;
+#X connect 16 1 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 1;
+#X connect 19 0 20 0;
+#X restore 426 94 pd netsend;
+#N canvas 592 209 1250 727 map 0;
+#X obj 43 65 s imp-vol-set;
+#X obj 142 63 s lor-vol-set;
+#X obj 256 65 s impulse-vol-set;
+#X obj 420 47 s impulse-reverb-vol-set;
+#X obj 289 144 s xpulse-vol-set;
+#X obj 437 147 s xpulse-reverb-vol-set;
+#X obj 32 145 s fm-vol-set;
+#X obj 490 306 s main-vol-set;
+#X obj 70 213 ~/Development/pd-numark/pd-numark;
+#X obj 43 41 r c-13;
+#X obj 143 39 r c-14;
+#X obj 256 41 r c-16;
+#X obj 421 23 r c-17;
+#X obj 489 281 r c-12;
+#X obj 289 120 r c-18;
+#X obj 438 123 r c-19;
+#X obj 32 121 r c-23;
+#X obj 141 99 r c-22;
+#X obj 141 154 r c-20;
+#X obj 141 178 s reverb-cutoff-set;
+#X obj 310 166 r c-21;
+#X obj 310 190 s reverb-cutoff-amt-set;
+#X obj 489 211 s reverb-feedback-set;
+#X obj 489 187 r c-15;
+#X obj 141 123 s reverb-volume-set;
+#X obj 253 577 r connect-numark;
+#X msg 244 647 midi-dialog \$1 0 0 0 0 0 0 0 0 \$1 0 0 0 0 0 0 0 0
+\$1 \$1;
+#X obj 301 600 r connect-numark-num;
+#X obj 248 612 int 4;
+#X obj 602 360 midiin;
+#X floatatom 841 63 0 0 0 0 - - -;
+#X floatatom 825 92 0 0 0 0 - - -;
+#X floatatom 857 30 0 0 0 0 - - -;
+#X obj 825 5 ctlin;
+#X text 856 93 value;
+#X text 869 4 (all controllers \, omni);
+#X text 872 63 controller #;
+#X obj 756 175 ctlin 0;
+#X obj 760 202 s imp-vol-set;
+#X obj 861 173 ctlin 1;
+#X obj 865 200 s lor-vol-set;
+#X obj 762 245 ctlin 2;
+#X obj 897 268 s impulse-vol-set;
+#X obj 766 272 s fm-vol-set;
+#X obj 893 241 ctlin 3;
+#X obj 895 325 s xpulse-vol-set;
+#X obj 1028 261 s impulse-reverb-vol-set;
+#X obj 1024 234 ctlin 4;
+#X obj 891 298 ctlin 5;
+#X obj 1047 313 s xpulse-reverb-vol-set;
+#X obj 1043 286 ctlin 6;
+#X obj 1040 409 s reverb-cutoff-amt-set;
+#X obj 1040 385 ctlin 7;
+#X obj 684 365 loadbang;
+#X obj 681 401 del 2500;
+#X msg 679 438 \; meters-set 0 \; impulse-vu-switch-set 1 \; impulse-reverb-vu-switch-set
+1 \; xpulse-vu-switch-set 1 \; xpulse-reverb-vu-switch-set 1 \; \;
+enable-numark-set 0 \;;
+#X obj 1036 526 s reverb-cutoff-set;
+#X obj 1036 502 ctlin 23;
+#X connect 9 0 0 0;
+#X connect 10 0 1 0;
+#X connect 11 0 2 0;
+#X connect 12 0 3 0;
+#X connect 14 0 4 0;
+#X connect 15 0 5 0;
+#X connect 16 0 6 0;
+#X connect 17 0 24 0;
+#X connect 18 0 19 0;
+#X connect 20 0 21 0;
+#X connect 23 0 22 0;
+#X connect 25 0 28 0;
+#X connect 26 0 8 0;
+#X connect 27 0 28 1;
+#X connect 28 0 26 0;
+#X connect 33 0 31 0;
+#X connect 33 1 30 0;
+#X connect 33 2 32 0;
+#X connect 37 0 38 0;
+#X connect 39 0 40 0;
+#X connect 41 0 43 0;
+#X connect 44 0 42 0;
+#X connect 47 0 46 0;
+#X connect 48 0 45 0;
+#X connect 50 0 49 0;
+#X connect 52 0 51 0;
+#X connect 53 0 54 0;
+#X connect 54 0 55 0;
+#X connect 57 0 56 0;
+#X restore 316 159 pd map;
+#X msg 425 184 \; hip-set 45 \; \; enable-mult-set 0 \; enable-solo-set
+0 \; enable-thorn-set 0 \; \; main-vu-switch-set 1 \; get_instrument_names
+bang \; \; \; volume-up-set bang \; \; joyosc-set set 1 \; connect-numark-num-set
+4 \;;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 9 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 6 0 11 0;
+#X connect 7 0 3 0;
+#X connect 8 0 5 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 17 1 19 0;
+#X connect 18 0 20 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 22 0 23 0;
+#X connect 22 1 24 0;
+#X connect 23 0 25 0;
+#X connect 24 0 25 0;
+#X connect 25 0 31 0;
+#X connect 26 0 27 0;
+#X connect 26 1 28 0;
+#X connect 27 0 29 0;
+#X connect 28 0 29 0;
+#X connect 29 0 32 0;
+#X connect 30 0 22 0;
+#X connect 33 0 26 0;
+#X connect 34 0 36 0;
+#X connect 36 0 35 0;
+#X connect 37 0 44 0;
+#X restore 528 480 pd guts;
+#X obj 543 522 bng 15 250 50 0 connect-numark connect-numark-set connect-numark
+17 7 0 10 -262144 -1 -1;
+#X obj 542 542 hradio 15 1 0 8 connect-numark-num connect-numark-num-set
+empty 0 -8 0 10 -262144 -1 -1 5;

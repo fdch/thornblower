@@ -1,0 +1,169 @@
+#N canvas 0 22 1211 645 12;
+#X obj 15 11 tgl 15 0 joyosc joyosc-set joyosc 17 7 0 10 -204786 -1
+-1 1 1;
+#X obj 42 276 route devices notifications;
+#X obj 42 250 route joyosc;
+#X obj 45 56 r joyosc;
+#X obj 41 195 oscparse;
+#X obj 42 222 list trim;
+#X msg 108 109 listen 8880;
+#X msg 43 108 listen 0;
+#X obj 43 82 sel;
+#X obj 42 305 route gc0;
+#X obj 45 349 route button axis;
+#X obj 147 449 + 32767;
+#X obj 148 475 / 65534;
+#X obj 153 504 * 127;
+#X obj 418 239 route float;
+#X obj 418 214 r joyosc;
+#X msg 418 263 \; joyosc-set set \$1;
+#X text 394 190 Reflect joyosc status:;
+#X obj 151 377 t a a;
+#X obj 233 416 list split 1;
+#X obj 237 509 s;
+#X obj 104 421 list split 1;
+#X obj 33 389 list;
+#X obj 240 323 spigot;
+#X obj 240 349 print;
+#X obj 43 327 t a a;
+#X obj 271 281 r debug;
+#X obj 395 35 r guide;
+#X obj 395 61 sel 1;
+#X obj 397 91 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 244 462 makefilename %s-set;
+#X msg 27 462 \; \$1-set \$2;
+#X obj 396 119 s pd-dsp-set;
+#X obj 261 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 261 187 s debug;
+#X obj 739 389 tgl 15 0 righttrigger righttrigger-set righttrigger
+17 7 0 10 -262144 -1 -1 0 1;
+#X obj 472 394 tgl 15 0 lefttrigger lefttrigger-set lefttrigger 17
+7 0 10 -262144 -1 -1 0 1;
+#X obj 569 437 tgl 15 0 back back-set back 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 674 437 tgl 15 0 start start-set start 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 739 369 tgl 15 0 rightshoulder rightshoulder-set rightshoulder
+17 7 0 10 -262144 -1 -1 0 1;
+#X obj 473 374 tgl 15 0 leftshoulder leftshoulder-set leftshoulder
+17 7 0 10 -262144 -1 -1 0 1;
+#X obj 621 460 tgl 15 0 guide guide-set guide_(DSP) 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 761 450 tgl 15 0 y y-set y 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 763 485 tgl 15 0 a a-set a 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 779 467 tgl 15 0 b b-set b 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 745 468 tgl 15 0 x x-set x 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 681 530 tgl 15 0 rightstick rightstick-set rightstick 17 7 0
+10 -262144 -1 -1 0 1;
+#X obj 550 530 tgl 15 0 leftstick leftstick-set leftstick 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 458 426 cnv 15 100 60 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj 488 428 tgl 15 0 dpup dpup-set dpup 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 485 467 tgl 15 0 dpdown dpdown-set dpdown 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 508 447 tgl 15 0 dpright dpright-set dpright 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 461 448 tgl 15 0 dpleft dpleft-set dpleft 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 488 492 tgl 15 0 debug debug-set debug 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 933 366 r tabs;
+#X obj 933 392 t b b;
+#X obj 933 418 del 100;
+#X obj 933 444 int 0;
+#X msg 997 439 1;
+#X obj 933 470 s b-set;
+#X obj 849 228 counter -m 14;
+#X obj 849 253 fd_seltab;
+#X obj 849 278 s imp-tab-set;
+#X obj 888 203 loadbang;
+#X obj 846 203 sel 1;
+#X obj 845 177 r b;
+#X obj 995 92 sel 1;
+#X obj 995 117 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 995 136 s impulse-L-set;
+#X obj 995 67 r leftshoulder;
+#X obj 845 92 sel 1;
+#X obj 845 117 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 845 136 s impulse-R-set;
+#X obj 845 67 r rightshoulder;
+#X obj 1021 229 sel 1;
+#X obj 1021 255 s lor-set;
+#X obj 1021 203 r x;
+#X obj 1032 315 r back;
+#X obj 1032 341 s mic-onoff-set;
+#X obj 708 112 sel 1;
+#X obj 708 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 708 86 r rightstick;
+#X obj 708 164 s xpulse-set;
+#X obj 524 61 r leftstick;
+#X obj 524 87 sel 1;
+#X obj 524 113 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 524 139 s impulse-switch-set;
+#X obj 43 143 netreceive -u -b 8880;
+#X connect 1 0 9 0;
+#X connect 2 0 1 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 6 0 87 0;
+#X connect 7 0 87 0;
+#X connect 8 0 7 0;
+#X connect 8 1 6 0;
+#X connect 9 0 25 0;
+#X connect 10 0 22 0;
+#X connect 10 1 18 0;
+#X connect 10 1 23 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 20 0;
+#X connect 14 0 16 0;
+#X connect 15 0 14 0;
+#X connect 18 0 21 0;
+#X connect 18 1 19 0;
+#X connect 19 0 30 0;
+#X connect 21 1 11 0;
+#X connect 22 0 31 0;
+#X connect 23 0 24 0;
+#X connect 25 0 10 0;
+#X connect 26 0 23 1;
+#X connect 27 0 28 0;
+#X connect 28 0 29 0;
+#X connect 29 0 32 0;
+#X connect 30 0 20 1;
+#X connect 33 0 34 0;
+#X connect 54 0 55 0;
+#X connect 55 0 56 0;
+#X connect 55 1 58 0;
+#X connect 56 0 57 0;
+#X connect 57 0 59 0;
+#X connect 58 0 59 0;
+#X connect 60 0 61 0;
+#X connect 61 0 62 0;
+#X connect 63 0 60 0;
+#X connect 64 0 60 0;
+#X connect 65 0 64 0;
+#X connect 66 0 67 0;
+#X connect 67 0 68 0;
+#X connect 69 0 66 0;
+#X connect 70 0 71 0;
+#X connect 71 0 72 0;
+#X connect 73 0 70 0;
+#X connect 74 0 75 0;
+#X connect 76 0 74 0;
+#X connect 77 0 78 0;
+#X connect 79 0 80 0;
+#X connect 80 0 82 0;
+#X connect 81 0 79 0;
+#X connect 83 0 84 0;
+#X connect 84 0 85 0;
+#X connect 85 0 86 0;
+#X connect 87 0 4 0;

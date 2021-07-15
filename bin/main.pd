@@ -1553,10 +1553,6 @@ reverb-cutoff-amt 10 8 0 10 -262144 -1 -1 0 1;
 #X obj 763 324 vsl 30 128 0 100 0 0 vol vol-set vol 0 -9 0 10 -204786
 -1 -1 12700 1;
 #X obj 802 331 vu 15 120 vu vu -1 -8 0 10 -66577 -1 1 0;
-#X obj 576 88 tgl 30 0 mic-onoff mic-onoff-set mic-onoff 35 15 0 15
--258113 -1 -1 0 1;
-#X obj 688 99 nbx 3 14 -1e+37 1e+37 0 0 mic-env mic-env-set mic-env
-0 -8 0 10 -262144 -1 -1 0 256;
 #X obj 502 74 tgl 15 0 debug debug-set debug 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 597 271 namecanvas \$0-ctrl;

@@ -1,7 +1,7 @@
 #N canvas 179 63 805 706 12;
 #X obj 49 215 pack f 10;
 #X obj 49 241 line~;
-#X obj 49 347 phasor~;
+#X obj 46 281 phasor~;
 #X obj 49 399 *~;
 #X obj 49 425 *~;
 #X obj 178 213 pack f 10;
